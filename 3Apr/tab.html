@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab</title>
+
+    <!-- jQuery Files -->
+    <script src="jquery-3.6.4.js"></script>
+    <script src="jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery-ui.css">
+
+    <!-- jQuery -->
+    <script>
+        jQuery(function () {
+            jQuery("#ta").tabs({
+                classes: {
+                    "ui-tabs": "highlight"
+                },
+                collapsible: true,
+                event: "mouseover"
+            });
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <div id="ta">
+        <ul>
+            <li><a href="#tab1">Lorempellat?</a></li>
+            <li><a href="#tab2">Lorempellat?</a></li>
+            <li><a href="#tab3">Lorempellat?</a></li>
+            <li><a href="#tab4">Lorempellat?</a></li>
+
+        </ul>
+        <div id="tab1">Lorem ipsum dolor sit amet consectetur adipisicing a ex placeat?</div>
+        <div id="tab2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere consequuntur quaerat rem mollitia
+            ex placeat?</div>
+        <div id="tab3">Lorem ipsum dolor sit amet consectetur adipisicing quaerat rem mollitia ex placeat?</div>
+        <div id="tab4">Lorem ipsum consequuntur quaerat rem mollitia ex placeat?</div>
+
+    </div>
+
+</body>
+
+</html>
