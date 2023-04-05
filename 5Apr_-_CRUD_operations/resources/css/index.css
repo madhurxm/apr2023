@@ -1,0 +1,46 @@
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+#all_dept_table tbody {
+  display: block;
+  max-height: 223px;
+  overflow-y: scroll;
+  border-color: orange !important;
+  border-width: 1px;
+}
+#all_dept_table thead tr {
+  display: table;
+  width: 100%;
+  /* table-layout: fixed;even columns width , fix width of table too */
+  /* border-color: none; */
+}
+#all_dept_table tbody tr {
+  display: table;
+  width: 100%;
+  /* table-layout:initial !important; */
+  /* border-color: orange !important; */
+  border-color: orange !important;
+  border-width: 1px;
+}
+#all_dept_table tbody tr td {
+  border-color: orange !important;
+  border-width: 1px;
+}
+#insertion_table {
+  border-color: orange !important;
+  border-width: 1px;
+}
+#insertion_table tbody tr {
+  border-color: orange !important;
+  border-width: 1px;
+}
+#insertion_table tbody tr td {
+  border-color: orange !important;
+  border-width: 1px;
+}
+#insertion_table tbody {
+  border-color: orange !important;
+  border-width: 1px;
+}
