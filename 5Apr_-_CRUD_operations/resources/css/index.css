@@ -23,10 +23,11 @@
   /* border-color: orange !important; */
   border-color: orange !important;
   border-width: 1px;
+ 
 }
 #all_dept_table tbody tr td {
   border-color: orange !important;
-  border-width: 1px;
+  border-width: 1px;  
 }
 #insertion_table {
   border-color: orange !important;

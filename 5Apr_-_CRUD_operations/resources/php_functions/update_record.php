@@ -1,11 +1,14 @@
 <?php
 include("../../config/config.php");
 $dept_id = $_REQUEST['dept_id'];
+$value = $_REQUEST['value'];
+$key = $_REQUEST['key'];
+
 if ($conn) {
-    $delete_query = "DELETE FROM `department_details` WHERE `dept_id` = '$dept_id';";
+    $delete_query = "UPDATE `department_details` SET `$key` = '$value' where dept_id = '$dept_id';";
     $row = mysqli_query($conn, $delete_query);
     if ($row) {
-        echo ("Record with Department ID ".$dept_id." is deleted");
+        echo ("Department detail is updated");
     } else {
         echo ("Query not run");
     }

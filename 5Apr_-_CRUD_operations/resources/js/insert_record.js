@@ -1,12 +1,13 @@
-$(document).on("submit","#creation_form", function(e) {
+$("#creation_form").submit(function(e) {
 
         e.preventDefault();
+        var data = jQuery("#creation_form").serialize();
         $("#creation_spinner").removeAttr("hidden");
         setTimeout(function(){
         $.ajax({
             type: "POST",
             url: "resources/php_functions/insert_record.php",
-            data: jQuery("#creation_form").serialize(),
+            data: data,
             success: function (response) {
                 // alert(response);
                 $("#creation_spinner").attr("hidden","true");
@@ -16,11 +17,12 @@ $(document).on("submit","#creation_form", function(e) {
                 // $("#creation_spinner").attr("hidden","true");
                 setTimeout(function(){
                     $("#insertion_msg").attr("hidden", "true");
-                },5000);
+                },2000);
     
             }
         });
         
     },3000);
+    return;
 
 });
