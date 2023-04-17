@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Summary of remove_specialChars
  * @param mixed $string
@@ -14,18 +15,21 @@ function remove_specialChars($string)
     $new_string = array();
     //count of special characters
     $special_char = 0;
+
     // separate special characters and alphabets
     for ($i = 0; $i < count($s); $i++) {
         if (preg_match("/[A-Za-z]/", $s[$i])) {
-            array_push($new_string, $s[$i]);
+            array_push($new_string, $s[$i]); 
         } else {
             $special_char++;
         }
     }
+
     // check if special characters are more than count 20
     if ($special_char > 20) {
         array_push($new_string, "WORLD");
     }
+
     echo (implode("", $new_string) . "<br>");
 }
 
