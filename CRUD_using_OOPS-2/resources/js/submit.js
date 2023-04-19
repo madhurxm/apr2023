@@ -34,6 +34,9 @@ $(document).on("click", ".delete_button", function () {
 });
 
 $(document).on("click", ".edit_button", function () {
+  $("#save_btn").css("visibility", "hidden");
+  $("#update_btn").css("visibility", "visible");
+
   var id = $(this).val();
   $(this)
     .parents("tr")
@@ -51,15 +54,12 @@ $(document).on("click", ".edit_button", function () {
           // $("#new_department_form input[type='checkbox']").each(function () {
           //   alert($(this).val() == mng_array[i]);
           // });
-    
+          var mng_pre = [];
           $("#new_department_form input[type='checkbox']").each(function () {
-              var mng_pre = $(this).val();
-            });
+            mng_pre.push($(this).val());
+          });
 
-          if (
-            $("#new_department_form input[type='checkbox']").attr("value") ==
-            mng_array[i]
-          ) {
+          if ($.inArray(mng_array[i], mng_pre) == true) {
             $("#new_department_form [value =" + mng_array[i] + "]").attr(
               "checked",
               "true"
@@ -71,21 +71,32 @@ $(document).on("click", ".edit_button", function () {
             // alert("else");
           }
         }
-        // return;
+      } else {
+        $("#new_department_form")
+          .find("." + class_name)
+          .val($.trim(value));
       }
-
-      // $("#new_department_form")
-      //   .find("." + class_name)
-      //   .val($.trim(value));
     });
-
-  // $.ajax({
-  //   type: "POST",
-  //   url: "resources/CRUD_operations/crud.php",
-  //   data: { department_id: id, function: "edit_department" },
-  //   success: function (response) {
-  //     $("#table_col").load(location.href + " #table_col");
-  //     return false;
-  //   },
-  // });
+  // return false;
+  $("#update_btn").click(function () {
+    $.ajax({
+      type: "POST",
+      url: "resources/CRUD_operations/crud.php",
+      data: ( $("#new_department_form")
+      .find(":input")
+      .filter(function () {
+        return $.trim(this.value).length > 0;
+      })
+      .serialize() +"&function=edit_department&" ),
+      success: function (response) {
+        $("#table_col").load(location.href + " #table_col");
+        $("#new_department_form")[0].reset();
+        $("#update_btn").css("visibility", "hidden");
+        $("#save_btn").css("visibility", "visible");
+        return false;
+      },
+    });
+  });
 });
+
+//

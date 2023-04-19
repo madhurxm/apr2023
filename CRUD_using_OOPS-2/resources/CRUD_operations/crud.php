@@ -37,6 +37,16 @@ class crud
             echo ("Department not deleted because " . mysqli_error($conn));
         }
     }
+
+    public function edit($conn, $department_id, $department_name, $manager_name)
+    {
+        $edit_query = " UPDATE `department_details` SET `dept_name` = '$department_name', `dept_manager` = '$manager_name' WHERE `dept_id` = '$department_id';";
+        if (mysqli_query($conn, $edit_query)) {
+            echo ("DEPARTMENT updated of " . $department_id);
+        } else {
+            echo ("Department not updated because " . mysqli_error($conn));
+        }
+    }
 }
 
 $conn = mysqli_connect("localhost", "root", "", "employee");
@@ -47,6 +57,7 @@ if ($conn) {
         
 
         if ($function == "create_department") {
+
             $department_name = $_REQUEST['department_name'];
             if (!preg_match("/^[A-Za-z]*$/i", $department_name)) die("Department name should be of alphabets only");
 
@@ -62,6 +73,20 @@ if ($conn) {
         } else if ($function == "delete_department") {
             $delete = new crud();
             $delete->delete($conn, $department_id);
+        } else if ($function == "edit_department") {
+
+            $department_name = $_REQUEST['department_name'];
+            if (!preg_match("/^[A-Za-z]*$/i", $department_name)) die("Department name should be of alphabets only");
+
+            $manager_name = $_REQUEST['manager_name'];
+            
+            if (count($manager_name) > 1) $manager_name = implode(", ", $_REQUEST['manager_name']);
+            else $manager_name = implode("", $_REQUEST['manager_name']);
+
+            if (!preg_match("/^[0-9]{3}$/i", $department_id)) die("Id should be of 3 digits only");
+
+            $edit = new crud();
+            $edit->edit($conn, $department_id, $department_name, $manager_name);
         }
     }
     $read = new crud();

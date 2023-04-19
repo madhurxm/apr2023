@@ -94,8 +94,9 @@
                                             </div>
                                         </div>
                                         <div class="m-3 ">
-                                            <div class="d-grid gap-2 col-3">
-                                                <button class="btn btn-primary fw-bold fs-5" type="submit">SAVE</button>
+                                            <div class="d-grid gap-2 col-1">
+                                                <button class="btn btn-primary fw-bold fs-5" type="submit" id="save_btn" style="visibility: visible;">SAVE</button>
+                                                <button class="btn btn-primary fw-bold fs-5" type="button" id="update_btn" style="visibility: hidden; position:absolute;">UPDATE</button>
                                             </div>
                                         </div>
                                     </form>
