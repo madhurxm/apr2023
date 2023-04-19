@@ -17,8 +17,8 @@
     <div class="container-fluid p-2">
         <div class="row row-cols-2 justify-content-center g-2">
             <!-- ====  DISPLAY COL ==== -->
-            <div class="col">
-                <table class="table table-danger table-hover table-bordered align-middle text-center">
+            <div class="col" id="table_col">
+                <table class="table table-danger table-hover table-bordered align-middle text-center" id="department_table">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -36,20 +36,20 @@
 
                         ?>
                             <tr>
-                                <td>
+                                <td class="dept_id">
                                     <?php echo $row["dept_id"]; ?>
                                 </td>
-                                <td>
+                                <td class="dept_name">
                                     <?php echo $row["dept_name"]; ?>
                                 </td>
-                                <td>
+                                <td class="dept_manager">
                                     <?php echo $row["dept_manager"]; ?>
                                 </td>
                                 <td>
-                                    <button type="button" name="" id="edit_button" class="btn btn-primary" value="<?php echo $row["dept_id"]; ?>">EDIT</button>
+                                    <button type="button" name="" id="" class="btn btn-primary edit_button" value="<?php echo $row["dept_id"]; ?>">EDIT</button>
                                 </td>
                                 <td>
-                                    <button type="button" name="" id="delete_button" class="btn btn-danger" value="<?php echo $row["dept_id"]; ?>">DELETE</button>
+                                    <button type="button" name="" id="" class="btn btn-danger delete_button" value="<?php echo $row["dept_id"]; ?>">DELETE</button>
                                 </td>
                             </tr>
                         <?php
@@ -73,24 +73,24 @@
                                     <form class="" id="new_department_form" method="post">
                                         <div class="m-3 ">
                                             <label for="" class="form-label">Department ID</label>
-                                            <input type="number" class="form-control" name="department_id" id="department_id">
+                                            <input type="text" pattern="\d*" class="form-control form_dept_id dept_id" name="department_id" id="department_id" maxlength="3" minlength="3">
                                         </div>
                                         <div class="m-3 ">
                                             <label for="" class="form-label">Department Name</label>
-                                            <input type="text" class="form-control" name="department_name" id="department_name">
+                                            <input type="text" class="form-control form_dept_name dept_name" name="department_name" id="department_name">
                                         </div>
-                                        <div class="m-3 ">
+                                        <div class="m-3">
                                             <label for="manager_name" class="form-label me-4"><b>Manager</b></label>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="manager_name[]" id="manager_1" value="Director">
+                                                <input class="form-check-input dept_manager" type="checkbox" name="manager_name[0]" id="manager_1" value="Director">
                                                 <label class="form-check-label" for="manager_1">Director</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="manager_name[]" id="manager_2" value="President">
+                                                <input class="form-check-input dept_manager" type="checkbox" name="manager_name[1]" id="manager_2" value="President">
                                                 <label class="form-check-label" for="manager_2">President</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input type="text" class="form-control" name="manager_name[]" id="manager_name" placeholder="Manager Name">
+                                                <input type="text" class="form-control dept_manager" name="manager_name[2]" id="manager_name" placeholder="Manager Name">
                                             </div>
                                         </div>
                                         <div class="m-3 ">
